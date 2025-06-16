@@ -70,15 +70,7 @@
         color: white;
       }
     </style>
-    <script>
-      window.addEventListener("chat-initialized", () => {
-        console.log("Event: Chat Initialized");
-      });
-      window.addEventListener("user-chat-engaged", ({ detail }) => {
-        console.log("Event: User Chat Engaged");
-        console.log("Text:", detail.text);
-      });
-    </script>
+
     <script src="https://phoenixinlineuviewqast.z8.web.core.windows.net/aiconcierge.js"></script>
     <script>
       if (window.Assistant) {
@@ -86,26 +78,7 @@
           target: "target-chat-id",
           apiKey: "25f74f43-e93d-452a-82f3-0d7adecf2679",
           productId: "random-id",
-          chatBotType: "LeaseConcierge",
-        });
-        window.onload = function () {
-          assistant.init();
-        };
-      }
-      if (window.dispatcher) {
-        dispatcher.on("bot-ready", (e) => {
-          console.log(e.detail);
-        });
-      }
-    </script>
-    <script src="./aiconcierge.js"></script>
-    <script>
-      if (window.Assistant) {
-        let assistant = new Assistant({
-          target: "target-id",
-          apiKey: "B4B3EDA6-B3A7-4947-935A-5B0A1C2F7B8C",
-          productId: "random-id",
-          chatBotType: "LeaseConcierge",
+          chatBotType: "SaleseConcierge",
         });
         window.onload = () => {
           assistant.init();
@@ -129,7 +102,7 @@
         document,
         "script",
         "mw",
-        "./aiconcierge.js?ts=" +
+        "https://phoenixinlineuviewqast.z8.web.core.windows.net/aiconcierge.js?ts=" +
           new Date().getDate() +
           new Date().getMonth() +
           new Date().getFullYear()
@@ -148,9 +121,12 @@
           document
             .getElementById("simplePopup")
             .style.removeProperty("display");
-          document.getElementById("popupTitle").textContent = event.popup.title;
-          document.getElementById("popupDescription").textContent =
-            event.popup.description;
+          document.getElementById("popupTitle").textContent = JSON.parse(
+            event.popup.description
+          ).title;
+          document.getElementById("popupDescription").textContent = JSON.parse(
+            event.popup.description
+          ).description;
         }
       }
       //elementId should be the id which we are using for embedding the chat
@@ -205,24 +181,24 @@
           id="calculator"
           style="display: flex; flex-direction: column; gap: 20px"
         >
-          <h2>Lease Calculator</h2>
+          <h2>Salese Calculator</h2>
           <div>
-            <label for="leaseAmount">Lease Amount:</label>
+            <label for="saleseAmount">Salese Amount:</label>
             <input
               type="number"
-              id="leaseAmount"
-              name="leaseAmount"
+              id="saleseAmount"
+              name="saleseAmount"
               required
               style="border-width: 1px; border-radius: 10px"
             />
           </div>
 
           <div>
-            <label for="leaseTerm">Lease Term (months):</label>
+            <label for="saleseTerm">Salese Term (months):</label>
             <input
               type="number"
-              id="leaseTerm"
-              name="leaseTerm"
+              id="saleseTerm"
+              name="saleseTerm"
               required
               style="border-width: 1px; border-radius: 10px"
             />
@@ -268,7 +244,7 @@
     >
       <h3 style="margin-top: 0" id="popupTitle">Hello there! 👋</h3>
       <p id="popupDescription">
-        Welcome to View QA InLine Sales. Need help with lease calculations or
+        Welcome to View QA InLine Sales. Need help with salese calculations or
         property info?
       </p>
       <button
@@ -288,7 +264,7 @@
     </div>
     <div id="target-chat-id" data-id="ai-root"></div>
     <footer>
-      <p>© 2024 View InLine Lease. All rights reserved.</p>
+      <p>© 2024 View InLine Salese. All rights reserved.</p>
     </footer>
   </body>
 </html>
